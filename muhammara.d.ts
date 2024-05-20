@@ -417,6 +417,10 @@ declare module "muhammara" {
     setPositionFromEnd(position: number): this;
   }
 
+  export interface PDFObjectParser {
+    parseNewObject(): PDFObject;
+  }
+
   export interface PDFReader {
     getPDFLevel(): number;
     getPagesCount(): number;
@@ -441,6 +445,8 @@ declare module "muhammara" {
     getXrefSize(): number;
     getXrefPosition(objectId: number): number;
     startReadingFromStream(inputStream: PDFStreamInput): ByteReader;
+    startReadingObjectsFromStream(inputStream: PDFStreamInput): PDFObjectParser;
+    startReadingObjectsFromStreams(inputStreams: PDFArray): PDFObjectParser;
     getParserStream(): ByteReaderWithPosition;
   }
 
