@@ -642,7 +642,7 @@ declare module "muhammara" {
     toPDFIndirectObjectReference(): PDFIndirectObjectReference;
     toPDFArray(): PDFArray;
     toPDFDictionary(): PDFDictionary;
-    toPDFStream(): PDFStream;
+    toPDFStream(): PDFStreamInput;
     toPDFBoolean(): PDFBoolean;
     toPDFLiteralString(): PDFLiteralString;
     toPDFHexString(): PDFHexString;
