@@ -464,6 +464,7 @@ declare module "muhammara" {
 
   export interface PDFLiteralString extends PDFObject {
     toText(): string;
+    toBytesArray(): Array<number>;
     value: string;
   }
 
