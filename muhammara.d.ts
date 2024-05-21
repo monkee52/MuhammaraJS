@@ -478,6 +478,8 @@ declare module "muhammara" {
   }
 
   export interface PDFHexString extends PDFObject {
+    toText(): string;
+    toBytesArray(): number[];
     value: string;
   }
 
