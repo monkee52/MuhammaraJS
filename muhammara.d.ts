@@ -145,7 +145,7 @@ declare module "muhammara" {
     encoding?: EEncoding;
   }
 
-  export type Glyph = Array<[number, number]>;
+  export type Glyph = [number, number][];
 
   export interface AbstractContentContext {
     b(): this;
@@ -224,7 +224,7 @@ declare module "muhammara" {
     writeFreeCode(freeCode: string): this;
     drawPath(...parameters: any[]): this; // This can't be materialized in TypeScript
     ////drawPath(...xyPairs: number[], options: GraphicOptions): this;
-    drawPath(xyPairs: Array<[number, number]>, options: GraphicOptions): this;
+    drawPath(xyPairs: [number, number][], options: GraphicOptions): this;
     drawCircle(x: PosX, y: PosY, r: number, options: GraphicOptions): this;
     drawSquare(x: PosX, y: PosY, l: number, options: GraphicOptions): this;
     drawRectangle(
@@ -404,12 +404,12 @@ declare module "muhammara" {
   }
 
   export interface ByteReader {
-    read(length: number): Array<number>;
+    read(length: number): number[];
     notEnded(): boolean;
   }
 
   export interface ByteReaderWithPosition {
-    read(length: number): Array<number>;
+    read(length: number): number[];
     notEnded(): boolean;
     getCurrentPosition(): number;
     skip(length: number): this;
@@ -464,7 +464,7 @@ declare module "muhammara" {
 
   export interface PDFLiteralString extends PDFObject {
     toText(): string;
-    toBytesArray(): Array<number>;
+    toBytesArray(): number[];
     value: string;
   }
 
@@ -497,7 +497,7 @@ declare module "muhammara" {
   }
 
   export interface PDFArray extends PDFObject {
-    toJSArray(): Array<any>;
+    toJSArray(): any[];
     queryObject(index: number): any;
     getLength(): number;
   }
@@ -570,8 +570,8 @@ declare module "muhammara" {
     ): PDFReader;
     copyDirectObjectAsIs(objectToCopy: PDFObject): void;
     copyObject(objectId: number): number;
-    copyDirectObjectWithDeepCopy(objectToCopy: PDFObject): Array<number>;
-    copyNewObjectsForDirectObject(objectIds: Array<number>): void;
+    copyDirectObjectWithDeepCopy(objectToCopy: PDFObject): number[];
+    copyNewObjectsForDirectObject(objectIds: number[]): void;
     getCopiedObjectID(objectId: number): number;
     getCopiedObjects(): { [key: string]: number };
     replaceSourceObjects(replaceMap: { [key: string]: number }): void;
@@ -585,15 +585,15 @@ declare module "muhammara" {
   export interface DictionaryContext {
     writeKey(): DictionaryContext;
     writeNameValue(nameValue: string): this;
-    writeRectangleValue(values: Array<number>): this;
+    writeRectangleValue(values: number[]): this;
     writeRectangleValue(a: number, b: number, c: number, d: number): this;
-    writeLiteralStringValue(literal: Array<number> | string): this;
+    writeLiteralStringValue(literal: number[] | string): this;
     writeBooleanValue(boolValue: boolean): this;
     writeObjectReferenceValue(objectId: number): this;
   }
 
   export interface ByteWriterWithPosition {
-    write(bytes: Array<number>): number;
+    write(bytes: number[]): number;
     getCurrentPosition(): number;
   }
 
@@ -670,7 +670,7 @@ declare module "muhammara" {
   }
 
   export interface PDFTextString {
-    toBytesArray(): Array<number>;
+    toBytesArray(): number[];
     toString(): string;
     fromString(value: string): void;
   }
@@ -902,7 +902,7 @@ declare module "muhammara" {
       height?: number;
       date?: string;
       subject?: string;
-      replies?: Array<AnnotReply>;
+      replies?: AnnotReply[];
     }
 
     interface AnnotReply {
